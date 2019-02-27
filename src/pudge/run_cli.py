@@ -1,3 +1,7 @@
+#!/usr/bin/python2.7 
+# -*- coding: utf-8 -*- 
+#author zhouh zhouhui295@163.com 2014-7-22
+
 from AlgorithmController.generator import *
 import os
 import click
@@ -11,6 +15,7 @@ def generate(project):
     cgenerator.gen_analyze()
     cgenerator.gen_interface()
     cgenerator.gen_cmake()
+    cgenerator.gen_project()
 
 @click.group()
 def cli():
