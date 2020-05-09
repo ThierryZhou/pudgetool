@@ -35,13 +35,12 @@ setup(
 
     packages=['pudge'],
     package_dir={'pudge': 'src/pudge'},
-    package_data={'pudge': ['*.tar*']}, 
     platforms = "any",  
     install_requires = ['requests>=2.7.0', 'Click'],
     scripts = [],  
     entry_points = {  
         'console_scripts': [  
-            'pudge = pudge.run_cli:cli' 
+            'pudge = pudge.entry_point:entry_point' 
         ]  
     }  
 )
