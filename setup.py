@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7 
+#!/usr/bin/python3 
 # -*- coding: utf-8 -*- 
 
 from setuptools import setup, find_packages
@@ -15,13 +15,10 @@ class PostInstallCommand(install):
  
         pkg_path = get_python_lib()
         pg_path = os.path.join(pkg_path, 'pudge')
-        alg_file = os.path.join(pg_path, 'AlgorithmController.tar.gz')
-        with tarfile.open(alg_file, 'r') as tar:
-            tar.extractall(pg_path)
 
 setup(  
     name = "pudge",  
-    version = "1.0",  
+    version = "1.0", 
     keywords = ("pudge tools", "CLI tools"),
     description = "pudge tools is automatic coding tools",  
     long_description = "pudge tools is automatic coding tools",  
@@ -31,12 +28,10 @@ setup(
     author = "zhouh",  
     author_email = "zhouhui295@163.com",
   
-    cmdclass={'install': PostInstallCommand},
-
-    packages=['pudge'],
-    package_dir={'pudge': 'src/pudge'},
     platforms = "any",  
-    install_requires = ['requests>=2.7.0', 'Click'],
+    install_requires = ['requests', 'Click'],
+    packages=find_packages('src'),
+    package_dir={'': 'src'},
     scripts = [],  
     entry_points = {  
         'console_scripts': [  

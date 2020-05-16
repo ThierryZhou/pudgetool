@@ -1,12 +1,12 @@
-#!/usr/bin/python2.7 
+#!/usr/bin/python3 
 # -*- coding: utf-8 -*- 
 #author zhouh zhouhui295@163.com 2014-7-22
 
 import os
 import click
 
-from s3 import command as s3cmd
-
+import s3.command as s3cmd
+import jump.command as jumpCmd
 
 @click.group()
 def entry_point():
@@ -18,3 +18,4 @@ def help():
 
 entry_point.add_command(help)
 entry_point.add_command(s3cmd.s3)
+entry_point.add_command(jumpCmd.jump)
