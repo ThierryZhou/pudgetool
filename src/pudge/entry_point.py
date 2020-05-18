@@ -5,8 +5,9 @@
 import os
 import click
 
-import s3.command as s3cmd
-import jump.command as jumpCmd
+from .s3 import command as s3cmd
+from .jump import command as jumpCmd
+
 
 @click.group()
 def entry_point():
