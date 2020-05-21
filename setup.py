@@ -16,12 +16,15 @@ class PostInstallCommand(install):
         pkg_path = get_python_lib()
         pg_path = os.path.join(pkg_path, 'pudge')
 
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+
 setup(  
-    name = "pudge",  
-    version = "1.0", 
+    name = "pudgetool", 
+    version = "1.0.1", 
     keywords = ("pudge tools", "CLI tools"),
     description = "pudge tools is automatic coding tools",  
-    long_description = "pudge tools is automatic coding tools",  
+    long_description = "pudge convenient tools",  
     license = "MIT Licence",  
   
     url = "https://github.com/ThePolarNight/pudgetools.git",
@@ -29,13 +32,13 @@ setup(
     author_email = "zhouhui295@163.com",
   
     platforms = "any",  
-    install_requires = ['requests', 'Click'],
+    install_requires = required,
     packages=find_packages('src'),
     package_dir={'': 'src'},
     scripts = [],  
     entry_points = {  
         'console_scripts': [  
-            'pudge = pudge.entry_point:entry_point' 
+            'pg = pudgetool.entry_point:entry_point' 
         ]  
-    }  
+    },
 )

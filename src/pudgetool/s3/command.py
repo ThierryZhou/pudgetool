@@ -46,8 +46,8 @@ def put(bucket, prefix, file):
         s3c.upload_fileobj(f, bucket, file_name)
 
 @objects.command()
-@click.option('--bucket', '-n', help='bucket name')
-@click.option('--prefix', '-n', default="", help='prefix path')
+@click.option('--bucket', '-b', help='bucket name')
+@click.option('--prefix', '-p', default="", help='prefix path')
 @click.option('--file', '-f', help='file name')
 def get(bucket, prefix, file):
     s3c = utils.get_s3client(params["endpoint_url"], params["access_key"], params["secret_key"])
