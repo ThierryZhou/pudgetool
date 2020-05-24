@@ -58,4 +58,9 @@ def get(bucket, prefix, file):
 @click.option('--bucket', '-b', help='bucket name')
 @click.option('--prefix', '-p', help='prefix path')
 def list(bucket, prefix):
-    pass
+    s3c = utils.get_s3client(params["endpoint_url"], params["access_key"], params["secret_key"])
+    objects = s3c.list_objects(Bucket=bucket)
+    contents = objects['Contents']
+    for i in range(len(contents)):
+        obj = contents[i]
+        click.echo("{}\t{}\t".format(obj["Key"], obj["Size"]))

@@ -21,10 +21,10 @@ with open('requirements.txt') as f:
 
 setup(  
     name = "pudgetool", 
-    version = "1.0.1", 
+    version = "1.0.3", 
     keywords = ("pudge tools", "CLI tools"),
     description = "pudge tools is automatic coding tools",  
-    long_description = "pudge convenient tools",  
+    long_description = "convenient python cli tools, like s3, jumpserver url switches...",  
     license = "MIT Licence",  
   
     url = "https://github.com/ThePolarNight/pudgetools.git",
