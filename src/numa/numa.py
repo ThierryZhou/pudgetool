@@ -5,31 +5,30 @@ It allows querying internal NUMA status, changing policies, binding to CPUs, etc
 """
 
 import platform
-
 from ctypes import *
-from ctypes_configure import configure
 
+import cffi
+c_code = """
+    #include <numa.h>
+    #include <sched.h>
+    int get_numa_num_nodes() {
+        return NUMA_NUM_NODES;
+    };
+    int get_cpu_setsize() {
+        return __CPU_SETSIZE;
+    };
+    int get_ncpubits() {
+        return __NCPUBITS;
+    };
+""".format()
 
-def __setup__():
-    class CConfigure(object):
-        _compilation_info_ = configure.ExternalCompilationInfo(
-            includes=['sched.h', 'numa.h'],
-            libraries=[]
-            )
+ffi = cffi.FFI()
+ffi.cdef(c_code)
+lib = ffi.verify()
 
-    for cname in ['NUMA_NUM_NODES', '__CPU_SETSIZE', '__NCPUBITS']:
-        if cname.startswith('__'):
-            pyname = cname[2:]
-        else:
-            pyname = cname
-        setattr(CConfigure, pyname, configure.ConstantInteger(cname))
-
-    return configure.configure(CConfigure)
-
-
-# setup
-globals().update(__setup__())
-
+NUMA_NUM_NODES = lib.get_numa_num_nodes()
+CPU_SETSIZE = lib.get_cpu_setsize()
+NCPUBITS = lib.get_ncpubits()
 
 class bitmask_t(Structure):
     _fields_ = [

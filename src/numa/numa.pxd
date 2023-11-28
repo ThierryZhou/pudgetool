@@ -61,4 +61,3 @@ cdef extern from "sched.h":
     int CPU_ISSET(int cpu, cpu_set_t *set)
     void CPU_SET(int cpu, cpu_set_t *set)
     void CPU_ZERO(cpu_set_t *set)
-
