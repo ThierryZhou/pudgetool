@@ -1,12 +1,14 @@
-# cython: language_level=2
+# cython: language_level=3
+# distutils: libraries = numa
+# distutils: include_dirs = /usr/include
 
 """
 Interface to numa(3) Linux library.
 
 It allows querying internal NUMA status, changing policies, binding to CPUs, etc.
 """
-
-cimport numa
+#cimport numa
+from numa cimport *
 
 def available():
     """

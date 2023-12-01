@@ -9,9 +9,19 @@
                 1
             ]
         ],
-        "depends": [],
+        "depends": [
+            "/usr/include/numa.h",
+            "/usr/include/sched.h"
+        ],
+        "include_dirs": [
+            "/usr/include",
+            "src/numa"
+        ],
         "libraries": [
             "numa"
+        ],
+        "library_dirs": [
+            "src/numa"
         ],
         "name": "numa",
         "sources": [
@@ -50,7 +60,7 @@ END: Cython Metadata */
 #define __PYX_ABI_MODULE_NAME "_cython_" CYTHON_ABI
 #define __PYX_TYPE_MODULE_PREFIX __PYX_ABI_MODULE_NAME "."
 #define CYTHON_HEX_VERSION 0x030006F0
-#define CYTHON_FUTURE_DIVISION 0
+#define CYTHON_FUTURE_DIVISION 1
 #include <stddef.h>
 #ifndef offsetof
   #define offsetof(type, member) ( (size_t) & ((type*)0) -> member )
@@ -2542,8 +2552,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_codeobj__24 __pyx_mstate_global->__pyx_codeobj__24
 /* #### Code section: module_code ### */
 
-/* "numa.pyx":11
- * cimport numa
+/* "numa.pyx":13
+ * from numa cimport *
  * 
  * def available():             # <<<<<<<<<<<<<<
  *     """
@@ -2576,7 +2586,7 @@ static PyObject *__pyx_pf_4numa_available(CYTHON_UNUSED PyObject *__pyx_self) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("available", 1);
 
-  /* "numa.pyx":17
+  /* "numa.pyx":19
  *     @rtype: C{bool}
  *     """
  *     return numa_available() != -1             # <<<<<<<<<<<<<<
@@ -2584,14 +2594,14 @@ static PyObject *__pyx_pf_4numa_available(CYTHON_UNUSED PyObject *__pyx_self) {
  * def get_max_node():
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong((numa_available() != -1L)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong((numa_available() != -1L)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "numa.pyx":11
- * cimport numa
+  /* "numa.pyx":13
+ * from numa cimport *
  * 
  * def available():             # <<<<<<<<<<<<<<
  *     """
@@ -2609,7 +2619,7 @@ static PyObject *__pyx_pf_4numa_available(CYTHON_UNUSED PyObject *__pyx_self) {
   return __pyx_r;
 }
 
-/* "numa.pyx":19
+/* "numa.pyx":21
  *     return numa_available() != -1
  * 
  * def get_max_node():             # <<<<<<<<<<<<<<
@@ -2643,7 +2653,7 @@ static PyObject *__pyx_pf_4numa_2get_max_node(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_max_node", 1);
 
-  /* "numa.pyx":25
+  /* "numa.pyx":27
  *     @rtype: C{int}
  *     """
  *     return numa_max_node()             # <<<<<<<<<<<<<<
@@ -2651,13 +2661,13 @@ static PyObject *__pyx_pf_4numa_2get_max_node(CYTHON_UNUSED PyObject *__pyx_self
  * def get_node_size(node):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(numa_max_node()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(numa_max_node()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "numa.pyx":19
+  /* "numa.pyx":21
  *     return numa_available() != -1
  * 
  * def get_max_node():             # <<<<<<<<<<<<<<
@@ -2676,7 +2686,7 @@ static PyObject *__pyx_pf_4numa_2get_max_node(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "numa.pyx":27
+/* "numa.pyx":29
  *     return numa_max_node()
  * 
  * def get_node_size(node):             # <<<<<<<<<<<<<<
@@ -2738,12 +2748,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 27, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_node_size") < 0)) __PYX_ERR(0, 27, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_node_size") < 0)) __PYX_ERR(0, 29, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -2754,7 +2764,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_node_size", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 27, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_node_size", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 29, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2797,22 +2807,22 @@ static PyObject *__pyx_pf_4numa_4get_node_size(CYTHON_UNUSED PyObject *__pyx_sel
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_node_size", 1);
 
-  /* "numa.pyx":39
+  /* "numa.pyx":41
  *     cdef long long size
  * 
  *     if node < 0 or node > get_max_node():             # <<<<<<<<<<<<<<
  *         raise ValueError, node
  * 
  */
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_node, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_node, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (!__pyx_t_3) {
   } else {
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -2832,19 +2842,19 @@ static PyObject *__pyx_pf_4numa_4get_node_size(CYTHON_UNUSED PyObject *__pyx_sel
     PyObject *__pyx_callargs[2] = {__pyx_t_5, NULL};
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_v_node, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_v_node, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_1 = __pyx_t_3;
   __pyx_L4_bool_binop_done:;
   if (unlikely(__pyx_t_1)) {
 
-    /* "numa.pyx":40
+    /* "numa.pyx":42
  * 
  *     if node < 0 or node > get_max_node():
  *         raise ValueError, node             # <<<<<<<<<<<<<<
@@ -2852,9 +2862,9 @@ static PyObject *__pyx_pf_4numa_4get_node_size(CYTHON_UNUSED PyObject *__pyx_sel
  *     size = numa_node_size64(node, &free)
  */
     __Pyx_Raise(__pyx_builtin_ValueError, __pyx_v_node, 0, 0);
-    __PYX_ERR(0, 40, __pyx_L1_error)
+    __PYX_ERR(0, 42, __pyx_L1_error)
 
-    /* "numa.pyx":39
+    /* "numa.pyx":41
  *     cdef long long size
  * 
  *     if node < 0 or node > get_max_node():             # <<<<<<<<<<<<<<
@@ -2863,17 +2873,17 @@ static PyObject *__pyx_pf_4numa_4get_node_size(CYTHON_UNUSED PyObject *__pyx_sel
  */
   }
 
-  /* "numa.pyx":42
+  /* "numa.pyx":44
  *         raise ValueError, node
  * 
  *     size = numa_node_size64(node, &free)             # <<<<<<<<<<<<<<
  * 
  *     return (free, size)
  */
-  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_node); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_node); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 44, __pyx_L1_error)
   __pyx_v_size = numa_node_size64(__pyx_t_6, (&__pyx_v_free));
 
-  /* "numa.pyx":44
+  /* "numa.pyx":46
  *     size = numa_node_size64(node, &free)
  * 
  *     return (free, size)             # <<<<<<<<<<<<<<
@@ -2881,23 +2891,23 @@ static PyObject *__pyx_pf_4numa_4get_node_size(CYTHON_UNUSED PyObject *__pyx_sel
  * def get_preferred():
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyInt_From_PY_LONG_LONG(__pyx_v_free); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_PY_LONG_LONG(__pyx_v_free); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyInt_From_PY_LONG_LONG(__pyx_v_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_PY_LONG_LONG(__pyx_v_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4)) __PYX_ERR(0, 46, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error);
   __pyx_t_4 = 0;
   __pyx_t_2 = 0;
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "numa.pyx":27
+  /* "numa.pyx":29
  *     return numa_max_node()
  * 
  * def get_node_size(node):             # <<<<<<<<<<<<<<
@@ -2918,7 +2928,7 @@ static PyObject *__pyx_pf_4numa_4get_node_size(CYTHON_UNUSED PyObject *__pyx_sel
   return __pyx_r;
 }
 
-/* "numa.pyx":46
+/* "numa.pyx":48
  *     return (free, size)
  * 
  * def get_preferred():             # <<<<<<<<<<<<<<
@@ -2952,7 +2962,7 @@ static PyObject *__pyx_pf_4numa_6get_preferred(CYTHON_UNUSED PyObject *__pyx_sel
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_preferred", 1);
 
-  /* "numa.pyx":52
+  /* "numa.pyx":54
  *     @rtype: C{int}
  *     """
  *     return numa_preferred()             # <<<<<<<<<<<<<<
@@ -2960,13 +2970,13 @@ static PyObject *__pyx_pf_4numa_6get_preferred(CYTHON_UNUSED PyObject *__pyx_sel
  * def node_to_cpus(node):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(numa_preferred()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(numa_preferred()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "numa.pyx":46
+  /* "numa.pyx":48
  *     return (free, size)
  * 
  * def get_preferred():             # <<<<<<<<<<<<<<
@@ -2985,7 +2995,7 @@ static PyObject *__pyx_pf_4numa_6get_preferred(CYTHON_UNUSED PyObject *__pyx_sel
   return __pyx_r;
 }
 
-/* "numa.pyx":54
+/* "numa.pyx":56
  *     return numa_preferred()
  * 
  * def node_to_cpus(node):             # <<<<<<<<<<<<<<
@@ -3047,12 +3057,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 54, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 56, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "node_to_cpus") < 0)) __PYX_ERR(0, 54, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "node_to_cpus") < 0)) __PYX_ERR(0, 56, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -3063,7 +3073,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("node_to_cpus", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 54, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("node_to_cpus", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 56, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3112,34 +3122,34 @@ static PyObject *__pyx_pf_4numa_8node_to_cpus(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("node_to_cpus", 1);
 
-  /* "numa.pyx":65
+  /* "numa.pyx":67
  *     cdef int j
  * 
  *     result = set()             # <<<<<<<<<<<<<<
  * 
  *     if node < 0 or node > get_max_node():
  */
-  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_result = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "numa.pyx":67
+  /* "numa.pyx":69
  *     result = set()
  * 
  *     if node < 0 or node > get_max_node():             # <<<<<<<<<<<<<<
  *         raise ValueError, node
  * 
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_node, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_node, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -3159,19 +3169,19 @@ static PyObject *__pyx_pf_4numa_8node_to_cpus(CYTHON_UNUSED PyObject *__pyx_self
     PyObject *__pyx_callargs[2] = {__pyx_t_5, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_v_node, __pyx_t_1, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_v_node, __pyx_t_1, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = __pyx_t_3;
   __pyx_L4_bool_binop_done:;
   if (unlikely(__pyx_t_2)) {
 
-    /* "numa.pyx":68
+    /* "numa.pyx":70
  * 
  *     if node < 0 or node > get_max_node():
  *         raise ValueError, node             # <<<<<<<<<<<<<<
@@ -3179,9 +3189,9 @@ static PyObject *__pyx_pf_4numa_8node_to_cpus(CYTHON_UNUSED PyObject *__pyx_self
  *     if numa_node_to_cpus(node, buf, sizeof(buf)) < 0:
  */
     __Pyx_Raise(__pyx_builtin_ValueError, __pyx_v_node, 0, 0);
-    __PYX_ERR(0, 68, __pyx_L1_error)
+    __PYX_ERR(0, 70, __pyx_L1_error)
 
-    /* "numa.pyx":67
+    /* "numa.pyx":69
  *     result = set()
  * 
  *     if node < 0 or node > get_max_node():             # <<<<<<<<<<<<<<
@@ -3190,18 +3200,18 @@ static PyObject *__pyx_pf_4numa_8node_to_cpus(CYTHON_UNUSED PyObject *__pyx_self
  */
   }
 
-  /* "numa.pyx":70
+  /* "numa.pyx":72
  *         raise ValueError, node
  * 
  *     if numa_node_to_cpus(node, buf, sizeof(buf)) < 0:             # <<<<<<<<<<<<<<
  *         raise RuntimeError, node
  * 
  */
-  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_node); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_node); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L1_error)
   __pyx_t_2 = (numa_node_to_cpus(__pyx_t_6, __pyx_v_buf, (sizeof(__pyx_v_buf))) < 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "numa.pyx":71
+    /* "numa.pyx":73
  * 
  *     if numa_node_to_cpus(node, buf, sizeof(buf)) < 0:
  *         raise RuntimeError, node             # <<<<<<<<<<<<<<
@@ -3209,9 +3219,9 @@ static PyObject *__pyx_pf_4numa_8node_to_cpus(CYTHON_UNUSED PyObject *__pyx_self
  *     for i in range(0, 8):
  */
     __Pyx_Raise(__pyx_builtin_RuntimeError, __pyx_v_node, 0, 0);
-    __PYX_ERR(0, 71, __pyx_L1_error)
+    __PYX_ERR(0, 73, __pyx_L1_error)
 
-    /* "numa.pyx":70
+    /* "numa.pyx":72
  *         raise ValueError, node
  * 
  *     if numa_node_to_cpus(node, buf, sizeof(buf)) < 0:             # <<<<<<<<<<<<<<
@@ -3220,7 +3230,7 @@ static PyObject *__pyx_pf_4numa_8node_to_cpus(CYTHON_UNUSED PyObject *__pyx_self
  */
   }
 
-  /* "numa.pyx":73
+  /* "numa.pyx":75
  *         raise RuntimeError, node
  * 
  *     for i in range(0, 8):             # <<<<<<<<<<<<<<
@@ -3230,7 +3240,7 @@ static PyObject *__pyx_pf_4numa_8node_to_cpus(CYTHON_UNUSED PyObject *__pyx_self
   for (__pyx_t_6 = 0; __pyx_t_6 < 8; __pyx_t_6+=1) {
     __pyx_v_i = __pyx_t_6;
 
-    /* "numa.pyx":74
+    /* "numa.pyx":76
  * 
  *     for i in range(0, 8):
  *         for j in range (0, sizeof(unsigned long)*8):             # <<<<<<<<<<<<<<
@@ -3242,7 +3252,7 @@ static PyObject *__pyx_pf_4numa_8node_to_cpus(CYTHON_UNUSED PyObject *__pyx_self
     for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
       __pyx_v_j = __pyx_t_9;
 
-      /* "numa.pyx":75
+      /* "numa.pyx":77
  *     for i in range(0, 8):
  *         for j in range (0, sizeof(unsigned long)*8):
  *             if buf[i] & (1L << j) == (1L << j):             # <<<<<<<<<<<<<<
@@ -3252,19 +3262,19 @@ static PyObject *__pyx_pf_4numa_8node_to_cpus(CYTHON_UNUSED PyObject *__pyx_self
       __pyx_t_2 = (((__pyx_v_buf[__pyx_v_i]) & (1L << __pyx_v_j)) == (1L << __pyx_v_j));
       if (__pyx_t_2) {
 
-        /* "numa.pyx":76
+        /* "numa.pyx":78
  *         for j in range (0, sizeof(unsigned long)*8):
  *             if buf[i] & (1L << j) == (1L << j):
  *                 result.add(i*sizeof(unsigned long)*8 + j)             # <<<<<<<<<<<<<<
  * 
  *     return result
  */
-        __pyx_t_4 = __Pyx_PyInt_FromSize_t((((__pyx_v_i * (sizeof(unsigned long))) * 8) + __pyx_v_j)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 76, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyInt_FromSize_t((((__pyx_v_i * (sizeof(unsigned long))) * 8) + __pyx_v_j)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 78, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_10 = PySet_Add(__pyx_v_result, __pyx_t_4); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 76, __pyx_L1_error)
+        __pyx_t_10 = PySet_Add(__pyx_v_result, __pyx_t_4); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 78, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "numa.pyx":75
+        /* "numa.pyx":77
  *     for i in range(0, 8):
  *         for j in range (0, sizeof(unsigned long)*8):
  *             if buf[i] & (1L << j) == (1L << j):             # <<<<<<<<<<<<<<
@@ -3275,7 +3285,7 @@ static PyObject *__pyx_pf_4numa_8node_to_cpus(CYTHON_UNUSED PyObject *__pyx_self
     }
   }
 
-  /* "numa.pyx":78
+  /* "numa.pyx":80
  *                 result.add(i*sizeof(unsigned long)*8 + j)
  * 
  *     return result             # <<<<<<<<<<<<<<
@@ -3287,7 +3297,7 @@ static PyObject *__pyx_pf_4numa_8node_to_cpus(CYTHON_UNUSED PyObject *__pyx_self
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "numa.pyx":54
+  /* "numa.pyx":56
  *     return numa_preferred()
  * 
  * def node_to_cpus(node):             # <<<<<<<<<<<<<<
@@ -3309,7 +3319,7 @@ static PyObject *__pyx_pf_4numa_8node_to_cpus(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "numa.pyx":80
+/* "numa.pyx":82
  *     return result
  * 
  * cdef object numa_nodemask_to_set(nodemask_t mask):             # <<<<<<<<<<<<<<
@@ -3336,26 +3346,26 @@ static PyObject *__pyx_f_4numa_numa_nodemask_to_set(nodemask_t __pyx_v_mask) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("numa_nodemask_to_set", 1);
 
-  /* "numa.pyx":84
+  /* "numa.pyx":86
  *     Convert NUMA nodemask to Python set.
  *     """
  *     cdef object result = set()             # <<<<<<<<<<<<<<
  *     cdef int i
  * 
  */
-  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_result = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "numa.pyx":87
+  /* "numa.pyx":89
  *     cdef int i
  * 
  *     for i in range(0, get_max_node()+1):             # <<<<<<<<<<<<<<
  *         if nodemask_isset(&mask, i):
  *             result.add(i)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -3375,20 +3385,20 @@ static PyObject *__pyx_f_4numa_numa_nodemask_to_set(nodemask_t __pyx_v_mask) {
     PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_t_2); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_t_2); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_6 = __pyx_t_5;
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_6; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "numa.pyx":88
+    /* "numa.pyx":90
  * 
  *     for i in range(0, get_max_node()+1):
  *         if nodemask_isset(&mask, i):             # <<<<<<<<<<<<<<
@@ -3398,16 +3408,16 @@ static PyObject *__pyx_f_4numa_numa_nodemask_to_set(nodemask_t __pyx_v_mask) {
     __pyx_t_7 = (nodemask_isset((&__pyx_v_mask), __pyx_v_i) != 0);
     if (__pyx_t_7) {
 
-      /* "numa.pyx":89
+      /* "numa.pyx":91
  *     for i in range(0, get_max_node()+1):
  *         if nodemask_isset(&mask, i):
  *             result.add(i)             # <<<<<<<<<<<<<<
  * 
  *     return result
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_result, __pyx_n_s_add); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_result, __pyx_n_s_add); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_8 = NULL;
       __pyx_t_9 = 0;
@@ -3428,13 +3438,13 @@ static PyObject *__pyx_f_4numa_numa_nodemask_to_set(nodemask_t __pyx_v_mask) {
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "numa.pyx":88
+      /* "numa.pyx":90
  * 
  *     for i in range(0, get_max_node()+1):
  *         if nodemask_isset(&mask, i):             # <<<<<<<<<<<<<<
@@ -3444,7 +3454,7 @@ static PyObject *__pyx_f_4numa_numa_nodemask_to_set(nodemask_t __pyx_v_mask) {
     }
   }
 
-  /* "numa.pyx":91
+  /* "numa.pyx":93
  *             result.add(i)
  * 
  *     return result             # <<<<<<<<<<<<<<
@@ -3456,7 +3466,7 @@ static PyObject *__pyx_f_4numa_numa_nodemask_to_set(nodemask_t __pyx_v_mask) {
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "numa.pyx":80
+  /* "numa.pyx":82
  *     return result
  * 
  * cdef object numa_nodemask_to_set(nodemask_t mask):             # <<<<<<<<<<<<<<
@@ -3479,7 +3489,7 @@ static PyObject *__pyx_f_4numa_numa_nodemask_to_set(nodemask_t __pyx_v_mask) {
   return __pyx_r;
 }
 
-/* "numa.pyx":93
+/* "numa.pyx":95
  *     return result
  * 
  * cdef set_to_numa_nodemask(object mask, nodemask_t *result):             # <<<<<<<<<<<<<<
@@ -3503,7 +3513,7 @@ static PyObject *__pyx_f_4numa_set_to_numa_nodemask(PyObject *__pyx_v_mask, node
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_to_numa_nodemask", 1);
 
-  /* "numa.pyx":99
+  /* "numa.pyx":101
  *     cdef int i
  * 
  *     nodemask_zero(result)             # <<<<<<<<<<<<<<
@@ -3512,14 +3522,14 @@ static PyObject *__pyx_f_4numa_set_to_numa_nodemask(PyObject *__pyx_v_mask, node
  */
   nodemask_zero(__pyx_v_result);
 
-  /* "numa.pyx":101
+  /* "numa.pyx":103
  *     nodemask_zero(result)
  * 
  *     for i in range(0, get_max_node()+1):             # <<<<<<<<<<<<<<
  *         if i in mask:
  *             nodemask_set(result, i)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -3539,33 +3549,33 @@ static PyObject *__pyx_f_4numa_set_to_numa_nodemask(PyObject *__pyx_v_mask, node
     PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_t_2); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_t_2); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_6 = __pyx_t_5;
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_6; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "numa.pyx":102
+    /* "numa.pyx":104
  * 
  *     for i in range(0, get_max_node()+1):
  *         if i in mask:             # <<<<<<<<<<<<<<
  *             nodemask_set(result, i)
  * 
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = (__Pyx_PySequence_ContainsTF(__pyx_t_2, __pyx_v_mask, Py_EQ)); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_7 = (__Pyx_PySequence_ContainsTF(__pyx_t_2, __pyx_v_mask, Py_EQ)); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_7) {
 
-      /* "numa.pyx":103
+      /* "numa.pyx":105
  *     for i in range(0, get_max_node()+1):
  *         if i in mask:
  *             nodemask_set(result, i)             # <<<<<<<<<<<<<<
@@ -3574,7 +3584,7 @@ static PyObject *__pyx_f_4numa_set_to_numa_nodemask(PyObject *__pyx_v_mask, node
  */
       nodemask_set(__pyx_v_result, __pyx_v_i);
 
-      /* "numa.pyx":102
+      /* "numa.pyx":104
  * 
  *     for i in range(0, get_max_node()+1):
  *         if i in mask:             # <<<<<<<<<<<<<<
@@ -3584,7 +3594,7 @@ static PyObject *__pyx_f_4numa_set_to_numa_nodemask(PyObject *__pyx_v_mask, node
     }
   }
 
-  /* "numa.pyx":93
+  /* "numa.pyx":95
  *     return result
  * 
  * cdef set_to_numa_nodemask(object mask, nodemask_t *result):             # <<<<<<<<<<<<<<
@@ -3607,7 +3617,7 @@ static PyObject *__pyx_f_4numa_set_to_numa_nodemask(PyObject *__pyx_v_mask, node
   return __pyx_r;
 }
 
-/* "numa.pyx":105
+/* "numa.pyx":107
  *             nodemask_set(result, i)
  * 
  * def set_interleave_mask(nodemask):             # <<<<<<<<<<<<<<
@@ -3669,12 +3679,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 107, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "set_interleave_mask") < 0)) __PYX_ERR(0, 105, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "set_interleave_mask") < 0)) __PYX_ERR(0, 107, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -3685,7 +3695,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_interleave_mask", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 105, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_interleave_mask", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 107, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3722,18 +3732,18 @@ static PyObject *__pyx_pf_4numa_10set_interleave_mask(CYTHON_UNUSED PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_interleave_mask", 1);
 
-  /* "numa.pyx":114
+  /* "numa.pyx":116
  *     cdef nodemask_t mask
  * 
  *     set_to_numa_nodemask(nodemask, &mask)             # <<<<<<<<<<<<<<
  * 
  *     numa_set_interleave_mask(&mask)
  */
-  __pyx_t_1 = __pyx_f_4numa_set_to_numa_nodemask(__pyx_v_nodemask, (&__pyx_v_mask)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_4numa_set_to_numa_nodemask(__pyx_v_nodemask, (&__pyx_v_mask)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "numa.pyx":116
+  /* "numa.pyx":118
  *     set_to_numa_nodemask(nodemask, &mask)
  * 
  *     numa_set_interleave_mask(&mask)             # <<<<<<<<<<<<<<
@@ -3742,7 +3752,7 @@ static PyObject *__pyx_pf_4numa_10set_interleave_mask(CYTHON_UNUSED PyObject *__
  */
   numa_set_interleave_mask((&__pyx_v_mask));
 
-  /* "numa.pyx":105
+  /* "numa.pyx":107
  *             nodemask_set(result, i)
  * 
  * def set_interleave_mask(nodemask):             # <<<<<<<<<<<<<<
@@ -3763,7 +3773,7 @@ static PyObject *__pyx_pf_4numa_10set_interleave_mask(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "numa.pyx":118
+/* "numa.pyx":120
  *     numa_set_interleave_mask(&mask)
  * 
  * def get_interleave_mask():             # <<<<<<<<<<<<<<
@@ -3797,7 +3807,7 @@ static PyObject *__pyx_pf_4numa_12get_interleave_mask(CYTHON_UNUSED PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_interleave_mask", 1);
 
-  /* "numa.pyx":125
+  /* "numa.pyx":127
  *     @rtype: C{set}
  *     """
  *     return numa_nodemask_to_set(numa_get_interleave_mask())             # <<<<<<<<<<<<<<
@@ -3805,13 +3815,13 @@ static PyObject *__pyx_pf_4numa_12get_interleave_mask(CYTHON_UNUSED PyObject *__
  * def bind(nodemask):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4numa_numa_nodemask_to_set(numa_get_interleave_mask()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_4numa_numa_nodemask_to_set(numa_get_interleave_mask()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "numa.pyx":118
+  /* "numa.pyx":120
  *     numa_set_interleave_mask(&mask)
  * 
  * def get_interleave_mask():             # <<<<<<<<<<<<<<
@@ -3830,7 +3840,7 @@ static PyObject *__pyx_pf_4numa_12get_interleave_mask(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "numa.pyx":127
+/* "numa.pyx":129
  *     return numa_nodemask_to_set(numa_get_interleave_mask())
  * 
  * def bind(nodemask):             # <<<<<<<<<<<<<<
@@ -3892,12 +3902,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 127, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 129, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "bind") < 0)) __PYX_ERR(0, 127, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "bind") < 0)) __PYX_ERR(0, 129, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -3908,7 +3918,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("bind", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 127, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("bind", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 129, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3945,18 +3955,18 @@ static PyObject *__pyx_pf_4numa_14bind(CYTHON_UNUSED PyObject *__pyx_self, PyObj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("bind", 1);
 
-  /* "numa.pyx":137
+  /* "numa.pyx":139
  *     cdef nodemask_t mask
  * 
  *     set_to_numa_nodemask(nodemask, &mask)             # <<<<<<<<<<<<<<
  * 
  *     numa_bind(&mask)
  */
-  __pyx_t_1 = __pyx_f_4numa_set_to_numa_nodemask(__pyx_v_nodemask, (&__pyx_v_mask)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_4numa_set_to_numa_nodemask(__pyx_v_nodemask, (&__pyx_v_mask)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "numa.pyx":139
+  /* "numa.pyx":141
  *     set_to_numa_nodemask(nodemask, &mask)
  * 
  *     numa_bind(&mask)             # <<<<<<<<<<<<<<
@@ -3965,7 +3975,7 @@ static PyObject *__pyx_pf_4numa_14bind(CYTHON_UNUSED PyObject *__pyx_self, PyObj
  */
   numa_bind((&__pyx_v_mask));
 
-  /* "numa.pyx":127
+  /* "numa.pyx":129
  *     return numa_nodemask_to_set(numa_get_interleave_mask())
  * 
  * def bind(nodemask):             # <<<<<<<<<<<<<<
@@ -3986,7 +3996,7 @@ static PyObject *__pyx_pf_4numa_14bind(CYTHON_UNUSED PyObject *__pyx_self, PyObj
   return __pyx_r;
 }
 
-/* "numa.pyx":141
+/* "numa.pyx":143
  *     numa_bind(&mask)
  * 
  * def set_preferred(node):             # <<<<<<<<<<<<<<
@@ -4048,12 +4058,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 143, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "set_preferred") < 0)) __PYX_ERR(0, 141, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "set_preferred") < 0)) __PYX_ERR(0, 143, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -4064,7 +4074,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_preferred", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 141, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_preferred", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 143, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4105,22 +4115,22 @@ static PyObject *__pyx_pf_4numa_16set_preferred(CYTHON_UNUSED PyObject *__pyx_se
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_preferred", 1);
 
-  /* "numa.pyx":151
+  /* "numa.pyx":153
  *     @type node: C{int}
  *     """
  *     if node < 0 or node > get_max_node():             # <<<<<<<<<<<<<<
  *         raise ValueError, node
  * 
  */
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_node, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_node, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 153, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (!__pyx_t_3) {
   } else {
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -4140,19 +4150,19 @@ static PyObject *__pyx_pf_4numa_16set_preferred(CYTHON_UNUSED PyObject *__pyx_se
     PyObject *__pyx_callargs[2] = {__pyx_t_5, NULL};
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_v_node, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_v_node, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 153, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_1 = __pyx_t_3;
   __pyx_L4_bool_binop_done:;
   if (unlikely(__pyx_t_1)) {
 
-    /* "numa.pyx":152
+    /* "numa.pyx":154
  *     """
  *     if node < 0 or node > get_max_node():
  *         raise ValueError, node             # <<<<<<<<<<<<<<
@@ -4160,9 +4170,9 @@ static PyObject *__pyx_pf_4numa_16set_preferred(CYTHON_UNUSED PyObject *__pyx_se
  *     numa_set_preferred(node)
  */
     __Pyx_Raise(__pyx_builtin_ValueError, __pyx_v_node, 0, 0);
-    __PYX_ERR(0, 152, __pyx_L1_error)
+    __PYX_ERR(0, 154, __pyx_L1_error)
 
-    /* "numa.pyx":151
+    /* "numa.pyx":153
  *     @type node: C{int}
  *     """
  *     if node < 0 or node > get_max_node():             # <<<<<<<<<<<<<<
@@ -4171,17 +4181,17 @@ static PyObject *__pyx_pf_4numa_16set_preferred(CYTHON_UNUSED PyObject *__pyx_se
  */
   }
 
-  /* "numa.pyx":154
+  /* "numa.pyx":156
  *         raise ValueError, node
  * 
  *     numa_set_preferred(node)             # <<<<<<<<<<<<<<
  * 
  * def set_localalloc():
  */
-  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_node); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_node); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L1_error)
   numa_set_preferred(__pyx_t_6);
 
-  /* "numa.pyx":141
+  /* "numa.pyx":143
  *     numa_bind(&mask)
  * 
  * def set_preferred(node):             # <<<<<<<<<<<<<<
@@ -4204,7 +4214,7 @@ static PyObject *__pyx_pf_4numa_16set_preferred(CYTHON_UNUSED PyObject *__pyx_se
   return __pyx_r;
 }
 
-/* "numa.pyx":156
+/* "numa.pyx":158
  *     numa_set_preferred(node)
  * 
  * def set_localalloc():             # <<<<<<<<<<<<<<
@@ -4234,7 +4244,7 @@ static PyObject *__pyx_pf_4numa_18set_localalloc(CYTHON_UNUSED PyObject *__pyx_s
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_localalloc", 1);
 
-  /* "numa.pyx":162
+  /* "numa.pyx":164
  *     Memory is preferably allocated on the node on which the thread is currently running.
  *     """
  *     numa_set_localalloc()             # <<<<<<<<<<<<<<
@@ -4243,7 +4253,7 @@ static PyObject *__pyx_pf_4numa_18set_localalloc(CYTHON_UNUSED PyObject *__pyx_s
  */
   numa_set_localalloc();
 
-  /* "numa.pyx":156
+  /* "numa.pyx":158
  *     numa_set_preferred(node)
  * 
  * def set_localalloc():             # <<<<<<<<<<<<<<
@@ -4258,7 +4268,7 @@ static PyObject *__pyx_pf_4numa_18set_localalloc(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "numa.pyx":164
+/* "numa.pyx":166
  *     numa_set_localalloc()
  * 
  * def set_membind(nodemask):             # <<<<<<<<<<<<<<
@@ -4320,12 +4330,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 164, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "set_membind") < 0)) __PYX_ERR(0, 164, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "set_membind") < 0)) __PYX_ERR(0, 166, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -4336,7 +4346,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_membind", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 164, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_membind", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 166, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4373,18 +4383,18 @@ static PyObject *__pyx_pf_4numa_20set_membind(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_membind", 1);
 
-  /* "numa.pyx":175
+  /* "numa.pyx":177
  *     cdef nodemask_t mask
  * 
  *     set_to_numa_nodemask(nodemask, &mask)             # <<<<<<<<<<<<<<
  *     numa_set_membind(&mask)
  * 
  */
-  __pyx_t_1 = __pyx_f_4numa_set_to_numa_nodemask(__pyx_v_nodemask, (&__pyx_v_mask)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_4numa_set_to_numa_nodemask(__pyx_v_nodemask, (&__pyx_v_mask)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "numa.pyx":176
+  /* "numa.pyx":178
  * 
  *     set_to_numa_nodemask(nodemask, &mask)
  *     numa_set_membind(&mask)             # <<<<<<<<<<<<<<
@@ -4393,7 +4403,7 @@ static PyObject *__pyx_pf_4numa_20set_membind(CYTHON_UNUSED PyObject *__pyx_self
  */
   numa_set_membind((&__pyx_v_mask));
 
-  /* "numa.pyx":164
+  /* "numa.pyx":166
  *     numa_set_localalloc()
  * 
  * def set_membind(nodemask):             # <<<<<<<<<<<<<<
@@ -4414,7 +4424,7 @@ static PyObject *__pyx_pf_4numa_20set_membind(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "numa.pyx":178
+/* "numa.pyx":180
  *     numa_set_membind(&mask)
  * 
  * def get_membind():             # <<<<<<<<<<<<<<
@@ -4448,7 +4458,7 @@ static PyObject *__pyx_pf_4numa_22get_membind(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_membind", 1);
 
-  /* "numa.pyx":185
+  /* "numa.pyx":187
  *     @rtype: C{set}
  *     """
  *     return numa_nodemask_to_set(numa_get_membind())             # <<<<<<<<<<<<<<
@@ -4456,13 +4466,13 @@ static PyObject *__pyx_pf_4numa_22get_membind(CYTHON_UNUSED PyObject *__pyx_self
  * def set_run_on_node_mask(nodemask):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4numa_numa_nodemask_to_set(numa_get_membind()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_4numa_numa_nodemask_to_set(numa_get_membind()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "numa.pyx":178
+  /* "numa.pyx":180
  *     numa_set_membind(&mask)
  * 
  * def get_membind():             # <<<<<<<<<<<<<<
@@ -4481,7 +4491,7 @@ static PyObject *__pyx_pf_4numa_22get_membind(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "numa.pyx":187
+/* "numa.pyx":189
  *     return numa_nodemask_to_set(numa_get_membind())
  * 
  * def set_run_on_node_mask(nodemask):             # <<<<<<<<<<<<<<
@@ -4543,12 +4553,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 189, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "set_run_on_node_mask") < 0)) __PYX_ERR(0, 187, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "set_run_on_node_mask") < 0)) __PYX_ERR(0, 189, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -4559,7 +4569,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_run_on_node_mask", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 187, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_run_on_node_mask", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 189, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4597,18 +4607,18 @@ static PyObject *__pyx_pf_4numa_24set_run_on_node_mask(CYTHON_UNUSED PyObject *_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_run_on_node_mask", 1);
 
-  /* "numa.pyx":199
+  /* "numa.pyx":201
  *     cdef nodemask_t mask
  * 
  *     set_to_numa_nodemask(nodemask, &mask)             # <<<<<<<<<<<<<<
  * 
  *     if numa_run_on_node_mask(&mask) < 0:
  */
-  __pyx_t_1 = __pyx_f_4numa_set_to_numa_nodemask(__pyx_v_nodemask, (&__pyx_v_mask)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_4numa_set_to_numa_nodemask(__pyx_v_nodemask, (&__pyx_v_mask)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "numa.pyx":201
+  /* "numa.pyx":203
  *     set_to_numa_nodemask(nodemask, &mask)
  * 
  *     if numa_run_on_node_mask(&mask) < 0:             # <<<<<<<<<<<<<<
@@ -4618,7 +4628,7 @@ static PyObject *__pyx_pf_4numa_24set_run_on_node_mask(CYTHON_UNUSED PyObject *_
   __pyx_t_2 = (numa_run_on_node_mask((&__pyx_v_mask)) < 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "numa.pyx":202
+    /* "numa.pyx":204
  * 
  *     if numa_run_on_node_mask(&mask) < 0:
  *         raise RuntimeError             # <<<<<<<<<<<<<<
@@ -4626,9 +4636,9 @@ static PyObject *__pyx_pf_4numa_24set_run_on_node_mask(CYTHON_UNUSED PyObject *_
  * def get_run_on_node_mask():
  */
     __Pyx_Raise(__pyx_builtin_RuntimeError, 0, 0, 0);
-    __PYX_ERR(0, 202, __pyx_L1_error)
+    __PYX_ERR(0, 204, __pyx_L1_error)
 
-    /* "numa.pyx":201
+    /* "numa.pyx":203
  *     set_to_numa_nodemask(nodemask, &mask)
  * 
  *     if numa_run_on_node_mask(&mask) < 0:             # <<<<<<<<<<<<<<
@@ -4637,7 +4647,7 @@ static PyObject *__pyx_pf_4numa_24set_run_on_node_mask(CYTHON_UNUSED PyObject *_
  */
   }
 
-  /* "numa.pyx":187
+  /* "numa.pyx":189
  *     return numa_nodemask_to_set(numa_get_membind())
  * 
  * def set_run_on_node_mask(nodemask):             # <<<<<<<<<<<<<<
@@ -4658,7 +4668,7 @@ static PyObject *__pyx_pf_4numa_24set_run_on_node_mask(CYTHON_UNUSED PyObject *_
   return __pyx_r;
 }
 
-/* "numa.pyx":204
+/* "numa.pyx":206
  *         raise RuntimeError
  * 
  * def get_run_on_node_mask():             # <<<<<<<<<<<<<<
@@ -4692,7 +4702,7 @@ static PyObject *__pyx_pf_4numa_26get_run_on_node_mask(CYTHON_UNUSED PyObject *_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_run_on_node_mask", 1);
 
-  /* "numa.pyx":211
+  /* "numa.pyx":213
  *     @rtype: C{set}
  *     """
  *     return numa_nodemask_to_set(numa_get_run_node_mask())             # <<<<<<<<<<<<<<
@@ -4700,13 +4710,13 @@ static PyObject *__pyx_pf_4numa_26get_run_on_node_mask(CYTHON_UNUSED PyObject *_
  * def get_distance(node1, node2):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4numa_numa_nodemask_to_set(numa_get_run_node_mask()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_4numa_numa_nodemask_to_set(numa_get_run_node_mask()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "numa.pyx":204
+  /* "numa.pyx":206
  *         raise RuntimeError
  * 
  * def get_run_on_node_mask():             # <<<<<<<<<<<<<<
@@ -4725,7 +4735,7 @@ static PyObject *__pyx_pf_4numa_26get_run_on_node_mask(CYTHON_UNUSED PyObject *_
   return __pyx_r;
 }
 
-/* "numa.pyx":213
+/* "numa.pyx":215
  *     return numa_nodemask_to_set(numa_get_run_node_mask())
  * 
  * def get_distance(node1, node2):             # <<<<<<<<<<<<<<
@@ -4790,7 +4800,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 215, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -4798,14 +4808,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 215, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_distance", 1, 2, 2, 1); __PYX_ERR(0, 213, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_distance", 1, 2, 2, 1); __PYX_ERR(0, 215, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_distance") < 0)) __PYX_ERR(0, 213, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_distance") < 0)) __PYX_ERR(0, 215, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -4818,7 +4828,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_distance", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 213, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_distance", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 215, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4860,22 +4870,22 @@ static PyObject *__pyx_pf_4numa_28get_distance(CYTHON_UNUSED PyObject *__pyx_sel
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_distance", 1);
 
-  /* "numa.pyx":226
+  /* "numa.pyx":228
  *     @rtype: C{int}
  *     """
  *     if node1 < 0 or node1 > get_max_node():             # <<<<<<<<<<<<<<
  *         raise ValueError, node1
  *     if node2 < 0 or node2 > get_max_node():
  */
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_node1, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_node1, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (!__pyx_t_3) {
   } else {
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -4895,19 +4905,19 @@ static PyObject *__pyx_pf_4numa_28get_distance(CYTHON_UNUSED PyObject *__pyx_sel
     PyObject *__pyx_callargs[2] = {__pyx_t_5, NULL};
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_v_node1, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_v_node1, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_1 = __pyx_t_3;
   __pyx_L4_bool_binop_done:;
   if (unlikely(__pyx_t_1)) {
 
-    /* "numa.pyx":227
+    /* "numa.pyx":229
  *     """
  *     if node1 < 0 or node1 > get_max_node():
  *         raise ValueError, node1             # <<<<<<<<<<<<<<
@@ -4915,9 +4925,9 @@ static PyObject *__pyx_pf_4numa_28get_distance(CYTHON_UNUSED PyObject *__pyx_sel
  *         raise ValueError, node2
  */
     __Pyx_Raise(__pyx_builtin_ValueError, __pyx_v_node1, 0, 0);
-    __PYX_ERR(0, 227, __pyx_L1_error)
+    __PYX_ERR(0, 229, __pyx_L1_error)
 
-    /* "numa.pyx":226
+    /* "numa.pyx":228
  *     @rtype: C{int}
  *     """
  *     if node1 < 0 or node1 > get_max_node():             # <<<<<<<<<<<<<<
@@ -4926,22 +4936,22 @@ static PyObject *__pyx_pf_4numa_28get_distance(CYTHON_UNUSED PyObject *__pyx_sel
  */
   }
 
-  /* "numa.pyx":228
+  /* "numa.pyx":230
  *     if node1 < 0 or node1 > get_max_node():
  *         raise ValueError, node1
  *     if node2 < 0 or node2 > get_max_node():             # <<<<<<<<<<<<<<
  *         raise ValueError, node2
  * 
  */
-  __pyx_t_4 = PyObject_RichCompare(__pyx_v_node2, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 228, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_v_node2, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_3) {
   } else {
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L7_bool_binop_done;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_max_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -4961,19 +4971,19 @@ static PyObject *__pyx_pf_4numa_28get_distance(CYTHON_UNUSED PyObject *__pyx_sel
     PyObject *__pyx_callargs[2] = {__pyx_t_5, NULL};
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 228, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_node2, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_node2, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_1 = __pyx_t_3;
   __pyx_L7_bool_binop_done:;
   if (unlikely(__pyx_t_1)) {
 
-    /* "numa.pyx":229
+    /* "numa.pyx":231
  *         raise ValueError, node1
  *     if node2 < 0 or node2 > get_max_node():
  *         raise ValueError, node2             # <<<<<<<<<<<<<<
@@ -4981,9 +4991,9 @@ static PyObject *__pyx_pf_4numa_28get_distance(CYTHON_UNUSED PyObject *__pyx_sel
  *     return numa_distance(node1, node2)
  */
     __Pyx_Raise(__pyx_builtin_ValueError, __pyx_v_node2, 0, 0);
-    __PYX_ERR(0, 229, __pyx_L1_error)
+    __PYX_ERR(0, 231, __pyx_L1_error)
 
-    /* "numa.pyx":228
+    /* "numa.pyx":230
  *     if node1 < 0 or node1 > get_max_node():
  *         raise ValueError, node1
  *     if node2 < 0 or node2 > get_max_node():             # <<<<<<<<<<<<<<
@@ -4992,7 +5002,7 @@ static PyObject *__pyx_pf_4numa_28get_distance(CYTHON_UNUSED PyObject *__pyx_sel
  */
   }
 
-  /* "numa.pyx":231
+  /* "numa.pyx":233
  *         raise ValueError, node2
  * 
  *     return numa_distance(node1, node2)             # <<<<<<<<<<<<<<
@@ -5000,15 +5010,15 @@ static PyObject *__pyx_pf_4numa_28get_distance(CYTHON_UNUSED PyObject *__pyx_sel
  * def get_affinity(pid):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_node1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_node2); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_From_int(numa_distance(__pyx_t_6, __pyx_t_7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_node1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_node2); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(numa_distance(__pyx_t_6, __pyx_t_7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "numa.pyx":213
+  /* "numa.pyx":215
  *     return numa_nodemask_to_set(numa_get_run_node_mask())
  * 
  * def get_distance(node1, node2):             # <<<<<<<<<<<<<<
@@ -5029,7 +5039,7 @@ static PyObject *__pyx_pf_4numa_28get_distance(CYTHON_UNUSED PyObject *__pyx_sel
   return __pyx_r;
 }
 
-/* "numa.pyx":233
+/* "numa.pyx":235
  *     return numa_distance(node1, node2)
  * 
  * def get_affinity(pid):             # <<<<<<<<<<<<<<
@@ -5091,12 +5101,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 235, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_affinity") < 0)) __PYX_ERR(0, 233, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_affinity") < 0)) __PYX_ERR(0, 235, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -5107,7 +5117,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_affinity", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 233, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_affinity", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 235, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5152,29 +5162,29 @@ static PyObject *__pyx_pf_4numa_30get_affinity(CYTHON_UNUSED PyObject *__pyx_sel
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_affinity", 1);
 
-  /* "numa.pyx":245
+  /* "numa.pyx":247
  *     cdef int i
  * 
  *     result = set()             # <<<<<<<<<<<<<<
  * 
  *     sched_getaffinity(pid, sizeof(cpu_set_t), &cpuset)
  */
-  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_result = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "numa.pyx":247
+  /* "numa.pyx":249
  *     result = set()
  * 
  *     sched_getaffinity(pid, sizeof(cpu_set_t), &cpuset)             # <<<<<<<<<<<<<<
  * 
  *     for i in range(0, sizeof(cpu_set_t)*8):
  */
-  __pyx_t_2 = __Pyx_PyInt_As_pid_t(__pyx_v_pid); if (unlikely((__pyx_t_2 == ((pid_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_pid_t(__pyx_v_pid); if (unlikely((__pyx_t_2 == ((pid_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L1_error)
   (void)(sched_getaffinity(__pyx_t_2, (sizeof(cpu_set_t)), (&__pyx_v_cpuset)));
 
-  /* "numa.pyx":249
+  /* "numa.pyx":251
  *     sched_getaffinity(pid, sizeof(cpu_set_t), &cpuset)
  * 
  *     for i in range(0, sizeof(cpu_set_t)*8):             # <<<<<<<<<<<<<<
@@ -5186,7 +5196,7 @@ static PyObject *__pyx_pf_4numa_30get_affinity(CYTHON_UNUSED PyObject *__pyx_sel
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "numa.pyx":250
+    /* "numa.pyx":252
  * 
  *     for i in range(0, sizeof(cpu_set_t)*8):
  *         if CPU_ISSET(i, &cpuset):             # <<<<<<<<<<<<<<
@@ -5196,19 +5206,19 @@ static PyObject *__pyx_pf_4numa_30get_affinity(CYTHON_UNUSED PyObject *__pyx_sel
     __pyx_t_6 = (CPU_ISSET(__pyx_v_i, (&__pyx_v_cpuset)) != 0);
     if (__pyx_t_6) {
 
-      /* "numa.pyx":251
+      /* "numa.pyx":253
  *     for i in range(0, sizeof(cpu_set_t)*8):
  *         if CPU_ISSET(i, &cpuset):
  *             result.add(i)             # <<<<<<<<<<<<<<
  * 
  *     return result
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = PySet_Add(__pyx_v_result, __pyx_t_1); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 251, __pyx_L1_error)
+      __pyx_t_7 = PySet_Add(__pyx_v_result, __pyx_t_1); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 253, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "numa.pyx":250
+      /* "numa.pyx":252
  * 
  *     for i in range(0, sizeof(cpu_set_t)*8):
  *         if CPU_ISSET(i, &cpuset):             # <<<<<<<<<<<<<<
@@ -5218,7 +5228,7 @@ static PyObject *__pyx_pf_4numa_30get_affinity(CYTHON_UNUSED PyObject *__pyx_sel
     }
   }
 
-  /* "numa.pyx":253
+  /* "numa.pyx":255
  *             result.add(i)
  * 
  *     return result             # <<<<<<<<<<<<<<
@@ -5230,7 +5240,7 @@ static PyObject *__pyx_pf_4numa_30get_affinity(CYTHON_UNUSED PyObject *__pyx_sel
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "numa.pyx":233
+  /* "numa.pyx":235
  *     return numa_distance(node1, node2)
  * 
  * def get_affinity(pid):             # <<<<<<<<<<<<<<
@@ -5250,7 +5260,7 @@ static PyObject *__pyx_pf_4numa_30get_affinity(CYTHON_UNUSED PyObject *__pyx_sel
   return __pyx_r;
 }
 
-/* "numa.pyx":255
+/* "numa.pyx":257
  *     return result
  * 
  * def set_affinity(pid, cpuset):             # <<<<<<<<<<<<<<
@@ -5315,7 +5325,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 257, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -5323,14 +5333,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 257, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_affinity", 1, 2, 2, 1); __PYX_ERR(0, 255, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_affinity", 1, 2, 2, 1); __PYX_ERR(0, 257, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "set_affinity") < 0)) __PYX_ERR(0, 255, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "set_affinity") < 0)) __PYX_ERR(0, 257, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -5343,7 +5353,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_affinity", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 255, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_affinity", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 257, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5386,7 +5396,7 @@ static PyObject *__pyx_pf_4numa_32set_affinity(CYTHON_UNUSED PyObject *__pyx_sel
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_affinity", 1);
 
-  /* "numa.pyx":269
+  /* "numa.pyx":271
  *     cdef int i
  * 
  *     CPU_ZERO(&_cpuset)             # <<<<<<<<<<<<<<
@@ -5395,7 +5405,7 @@ static PyObject *__pyx_pf_4numa_32set_affinity(CYTHON_UNUSED PyObject *__pyx_sel
  */
   CPU_ZERO((&__pyx_v__cpuset));
 
-  /* "numa.pyx":271
+  /* "numa.pyx":273
  *     CPU_ZERO(&_cpuset)
  * 
  *     for i in range(0, sizeof(cpu_set_t)*8):             # <<<<<<<<<<<<<<
@@ -5407,20 +5417,20 @@ static PyObject *__pyx_pf_4numa_32set_affinity(CYTHON_UNUSED PyObject *__pyx_sel
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "numa.pyx":272
+    /* "numa.pyx":274
  * 
  *     for i in range(0, sizeof(cpu_set_t)*8):
  *         if i in cpuset:             # <<<<<<<<<<<<<<
  *             CPU_SET(i, &_cpuset)
  * 
  */
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 274, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_t_4, __pyx_v_cpuset, Py_EQ)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_t_4, __pyx_v_cpuset, Py_EQ)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 274, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_5) {
 
-      /* "numa.pyx":273
+      /* "numa.pyx":275
  *     for i in range(0, sizeof(cpu_set_t)*8):
  *         if i in cpuset:
  *             CPU_SET(i, &_cpuset)             # <<<<<<<<<<<<<<
@@ -5429,7 +5439,7 @@ static PyObject *__pyx_pf_4numa_32set_affinity(CYTHON_UNUSED PyObject *__pyx_sel
  */
       CPU_SET(__pyx_v_i, (&__pyx_v__cpuset));
 
-      /* "numa.pyx":272
+      /* "numa.pyx":274
  * 
  *     for i in range(0, sizeof(cpu_set_t)*8):
  *         if i in cpuset:             # <<<<<<<<<<<<<<
@@ -5439,25 +5449,25 @@ static PyObject *__pyx_pf_4numa_32set_affinity(CYTHON_UNUSED PyObject *__pyx_sel
     }
   }
 
-  /* "numa.pyx":275
+  /* "numa.pyx":277
  *             CPU_SET(i, &_cpuset)
  * 
  *     if sched_setaffinity(pid, sizeof(cpu_set_t), &_cpuset) < 0:             # <<<<<<<<<<<<<<
  *         raise RuntimeError
  */
-  __pyx_t_6 = __Pyx_PyInt_As_pid_t(__pyx_v_pid); if (unlikely((__pyx_t_6 == ((pid_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 275, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_As_pid_t(__pyx_v_pid); if (unlikely((__pyx_t_6 == ((pid_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 277, __pyx_L1_error)
   __pyx_t_5 = (sched_setaffinity(__pyx_t_6, (sizeof(cpu_set_t)), (&__pyx_v__cpuset)) < 0);
   if (unlikely(__pyx_t_5)) {
 
-    /* "numa.pyx":276
+    /* "numa.pyx":278
  * 
  *     if sched_setaffinity(pid, sizeof(cpu_set_t), &_cpuset) < 0:
  *         raise RuntimeError             # <<<<<<<<<<<<<<
  */
     __Pyx_Raise(__pyx_builtin_RuntimeError, 0, 0, 0);
-    __PYX_ERR(0, 276, __pyx_L1_error)
+    __PYX_ERR(0, 278, __pyx_L1_error)
 
-    /* "numa.pyx":275
+    /* "numa.pyx":277
  *             CPU_SET(i, &_cpuset)
  * 
  *     if sched_setaffinity(pid, sizeof(cpu_set_t), &_cpuset) < 0:             # <<<<<<<<<<<<<<
@@ -5465,7 +5475,7 @@ static PyObject *__pyx_pf_4numa_32set_affinity(CYTHON_UNUSED PyObject *__pyx_sel
  */
   }
 
-  /* "numa.pyx":255
+  /* "numa.pyx":257
  *     return result
  * 
  * def set_affinity(pid, cpuset):             # <<<<<<<<<<<<<<
@@ -5552,9 +5562,9 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 40, __pyx_L1_error)
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 71, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 75, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -5565,179 +5575,179 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "numa.pyx":11
- * cimport numa
+  /* "numa.pyx":13
+ * from numa cimport *
  * 
  * def available():             # <<<<<<<<<<<<<<
  *     """
  *     Is numa(3) available?
  */
-  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_available, 11, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_available, 13, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 13, __pyx_L1_error)
 
-  /* "numa.pyx":19
+  /* "numa.pyx":21
  *     return numa_available() != -1
  * 
  * def get_max_node():             # <<<<<<<<<<<<<<
  *     """
  *     Maximum number of NUMA node.
  */
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_max_node, 19, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_max_node, 21, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 21, __pyx_L1_error)
 
-  /* "numa.pyx":27
+  /* "numa.pyx":29
  *     return numa_max_node()
  * 
  * def get_node_size(node):             # <<<<<<<<<<<<<<
  *     """
  *     Get size of memory on C{node}.
  */
-  __pyx_tuple__3 = PyTuple_Pack(3, __pyx_n_s_node, __pyx_n_s_free, __pyx_n_s_size); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(3, __pyx_n_s_node, __pyx_n_s_free, __pyx_n_s_size); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_node_size, 27, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_node_size, 29, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 29, __pyx_L1_error)
 
-  /* "numa.pyx":46
+  /* "numa.pyx":48
  *     return (free, size)
  * 
  * def get_preferred():             # <<<<<<<<<<<<<<
  *     """
  *     Return preferred node for this process.
  */
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_preferred, 46, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_preferred, 48, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 48, __pyx_L1_error)
 
-  /* "numa.pyx":54
+  /* "numa.pyx":56
  *     return numa_preferred()
  * 
  * def node_to_cpus(node):             # <<<<<<<<<<<<<<
  *     """
  *     Get CPUs available on C{node}.
  */
-  __pyx_tuple__6 = PyTuple_Pack(5, __pyx_n_s_node, __pyx_n_s_buf, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_result); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(5, __pyx_n_s_node, __pyx_n_s_buf, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_result); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_node_to_cpus, 54, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_node_to_cpus, 56, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 56, __pyx_L1_error)
 
-  /* "numa.pyx":105
+  /* "numa.pyx":107
  *             nodemask_set(result, i)
  * 
  * def set_interleave_mask(nodemask):             # <<<<<<<<<<<<<<
  *     """
  *     Sets the memory interleave mask for the current thread to C{nodemask}.
  */
-  __pyx_tuple__8 = PyTuple_Pack(2, __pyx_n_s_nodemask, __pyx_n_s_mask); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(2, __pyx_n_s_nodemask, __pyx_n_s_mask); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_set_interleave_mask, 105, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_set_interleave_mask, 107, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 107, __pyx_L1_error)
 
-  /* "numa.pyx":118
+  /* "numa.pyx":120
  *     numa_set_interleave_mask(&mask)
  * 
  * def get_interleave_mask():             # <<<<<<<<<<<<<<
  *     """
  *     Get interleave mask for current thread.
  */
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_interleave_mask, 118, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_interleave_mask, 120, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 120, __pyx_L1_error)
 
-  /* "numa.pyx":127
+  /* "numa.pyx":129
  *     return numa_nodemask_to_set(numa_get_interleave_mask())
  * 
  * def bind(nodemask):             # <<<<<<<<<<<<<<
  *     """
  *     Binds the current thread and its children to the nodes specified in nodemask.
  */
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_bind, 127, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_bind, 129, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 129, __pyx_L1_error)
 
-  /* "numa.pyx":141
+  /* "numa.pyx":143
  *     numa_bind(&mask)
  * 
  * def set_preferred(node):             # <<<<<<<<<<<<<<
  *     """
  *     Sets  the preferred node for the current thread to node.
  */
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_n_s_node); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_n_s_node); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_set_preferred, 141, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_set_preferred, 143, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 143, __pyx_L1_error)
 
-  /* "numa.pyx":156
+  /* "numa.pyx":158
  *     numa_set_preferred(node)
  * 
  * def set_localalloc():             # <<<<<<<<<<<<<<
  *     """
  *     Sets a local memory allocation policy for the calling thread.
  */
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_set_localalloc, 156, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_set_localalloc, 158, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 158, __pyx_L1_error)
 
-  /* "numa.pyx":164
+  /* "numa.pyx":166
  *     numa_set_localalloc()
  * 
  * def set_membind(nodemask):             # <<<<<<<<<<<<<<
  *     """
  *     Sets the memory allocation mask.
  */
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_set_membind, 164, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_set_membind, 166, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 166, __pyx_L1_error)
 
-  /* "numa.pyx":178
+  /* "numa.pyx":180
  *     numa_set_membind(&mask)
  * 
  * def get_membind():             # <<<<<<<<<<<<<<
  *     """
  *     Returns  the  mask of nodes from which memory can currently be allocated.
  */
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_membind, 178, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_membind, 180, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 180, __pyx_L1_error)
 
-  /* "numa.pyx":187
+  /* "numa.pyx":189
  *     return numa_nodemask_to_set(numa_get_membind())
  * 
  * def set_run_on_node_mask(nodemask):             # <<<<<<<<<<<<<<
  *     """
  *     Runs the  current thread and its children only on nodes specified in nodemask.
  */
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_set_run_on_node_mask, 187, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_set_run_on_node_mask, 189, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 189, __pyx_L1_error)
 
-  /* "numa.pyx":204
+  /* "numa.pyx":206
  *         raise RuntimeError
  * 
  * def get_run_on_node_mask():             # <<<<<<<<<<<<<<
  *     """
  *     Returns the mask of nodes that the current thread is allowed to run on.
  */
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_run_on_node_mask, 204, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_run_on_node_mask, 206, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 206, __pyx_L1_error)
 
-  /* "numa.pyx":213
+  /* "numa.pyx":215
  *     return numa_nodemask_to_set(numa_get_run_node_mask())
  * 
  * def get_distance(node1, node2):             # <<<<<<<<<<<<<<
  *     """
  *     Reports the distance in the machine topology between two nodes.
  */
-  __pyx_tuple__19 = PyTuple_Pack(2, __pyx_n_s_node1, __pyx_n_s_node2); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(2, __pyx_n_s_node1, __pyx_n_s_node2); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
-  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_distance, 213, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_distance, 215, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 215, __pyx_L1_error)
 
-  /* "numa.pyx":233
+  /* "numa.pyx":235
  *     return numa_distance(node1, node2)
  * 
  * def get_affinity(pid):             # <<<<<<<<<<<<<<
  *     """
  *     Returns the affinity mask of the process whose ID is pid.
  */
-  __pyx_tuple__21 = PyTuple_Pack(4, __pyx_n_s_pid, __pyx_n_s_cpuset, __pyx_n_s_i, __pyx_n_s_result); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(4, __pyx_n_s_pid, __pyx_n_s_cpuset, __pyx_n_s_i, __pyx_n_s_result); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_affinity, 233, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_get_affinity, 235, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 235, __pyx_L1_error)
 
-  /* "numa.pyx":255
+  /* "numa.pyx":257
  *     return result
  * 
  * def set_affinity(pid, cpuset):             # <<<<<<<<<<<<<<
  *     """
  *     Sets  the  CPU  affinity  mask of the process whose ID is pid to the value specified by mask.
  */
-  __pyx_tuple__23 = PyTuple_Pack(4, __pyx_n_s_pid, __pyx_n_s_cpuset, __pyx_n_s_cpuset_2, __pyx_n_s_i); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(4, __pyx_n_s_pid, __pyx_n_s_cpuset, __pyx_n_s_cpuset_2, __pyx_n_s_i); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_set_affinity, 255, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_numa_numa_pyx, __pyx_n_s_set_affinity, 257, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -6103,214 +6113,214 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "numa.pyx":11
- * cimport numa
+  /* "numa.pyx":13
+ * from numa cimport *
  * 
  * def available():             # <<<<<<<<<<<<<<
  *     """
  *     Is numa(3) available?
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_1available, 0, __pyx_n_s_available, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj_)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_1available, 0, __pyx_n_s_available, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj_)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_available, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_available, __pyx_t_2) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":19
+  /* "numa.pyx":21
  *     return numa_available() != -1
  * 
  * def get_max_node():             # <<<<<<<<<<<<<<
  *     """
  *     Maximum number of NUMA node.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_3get_max_node, 0, __pyx_n_s_get_max_node, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_3get_max_node, 0, __pyx_n_s_get_max_node, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_max_node, __pyx_t_2) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_max_node, __pyx_t_2) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":27
+  /* "numa.pyx":29
  *     return numa_max_node()
  * 
  * def get_node_size(node):             # <<<<<<<<<<<<<<
  *     """
  *     Get size of memory on C{node}.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_5get_node_size, 0, __pyx_n_s_get_node_size, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_5get_node_size, 0, __pyx_n_s_get_node_size, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_node_size, __pyx_t_2) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_node_size, __pyx_t_2) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":46
+  /* "numa.pyx":48
  *     return (free, size)
  * 
  * def get_preferred():             # <<<<<<<<<<<<<<
  *     """
  *     Return preferred node for this process.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_7get_preferred, 0, __pyx_n_s_get_preferred, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_7get_preferred, 0, __pyx_n_s_get_preferred, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_preferred, __pyx_t_2) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_preferred, __pyx_t_2) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":54
+  /* "numa.pyx":56
  *     return numa_preferred()
  * 
  * def node_to_cpus(node):             # <<<<<<<<<<<<<<
  *     """
  *     Get CPUs available on C{node}.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_9node_to_cpus, 0, __pyx_n_s_node_to_cpus, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_9node_to_cpus, 0, __pyx_n_s_node_to_cpus, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_node_to_cpus, __pyx_t_2) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_node_to_cpus, __pyx_t_2) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":105
+  /* "numa.pyx":107
  *             nodemask_set(result, i)
  * 
  * def set_interleave_mask(nodemask):             # <<<<<<<<<<<<<<
  *     """
  *     Sets the memory interleave mask for the current thread to C{nodemask}.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_11set_interleave_mask, 0, __pyx_n_s_set_interleave_mask, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_11set_interleave_mask, 0, __pyx_n_s_set_interleave_mask, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_interleave_mask, __pyx_t_2) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_interleave_mask, __pyx_t_2) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":118
+  /* "numa.pyx":120
  *     numa_set_interleave_mask(&mask)
  * 
  * def get_interleave_mask():             # <<<<<<<<<<<<<<
  *     """
  *     Get interleave mask for current thread.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_13get_interleave_mask, 0, __pyx_n_s_get_interleave_mask, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_13get_interleave_mask, 0, __pyx_n_s_get_interleave_mask, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_interleave_mask, __pyx_t_2) < 0) __PYX_ERR(0, 118, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_interleave_mask, __pyx_t_2) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":127
+  /* "numa.pyx":129
  *     return numa_nodemask_to_set(numa_get_interleave_mask())
  * 
  * def bind(nodemask):             # <<<<<<<<<<<<<<
  *     """
  *     Binds the current thread and its children to the nodes specified in nodemask.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_15bind, 0, __pyx_n_s_bind, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_15bind, 0, __pyx_n_s_bind, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_bind, __pyx_t_2) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_bind, __pyx_t_2) < 0) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":141
+  /* "numa.pyx":143
  *     numa_bind(&mask)
  * 
  * def set_preferred(node):             # <<<<<<<<<<<<<<
  *     """
  *     Sets  the preferred node for the current thread to node.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_17set_preferred, 0, __pyx_n_s_set_preferred, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_17set_preferred, 0, __pyx_n_s_set_preferred, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_preferred, __pyx_t_2) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_preferred, __pyx_t_2) < 0) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":156
+  /* "numa.pyx":158
  *     numa_set_preferred(node)
  * 
  * def set_localalloc():             # <<<<<<<<<<<<<<
  *     """
  *     Sets a local memory allocation policy for the calling thread.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_19set_localalloc, 0, __pyx_n_s_set_localalloc, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_19set_localalloc, 0, __pyx_n_s_set_localalloc, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_localalloc, __pyx_t_2) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_localalloc, __pyx_t_2) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":164
+  /* "numa.pyx":166
  *     numa_set_localalloc()
  * 
  * def set_membind(nodemask):             # <<<<<<<<<<<<<<
  *     """
  *     Sets the memory allocation mask.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_21set_membind, 0, __pyx_n_s_set_membind, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_21set_membind, 0, __pyx_n_s_set_membind, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_membind, __pyx_t_2) < 0) __PYX_ERR(0, 164, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_membind, __pyx_t_2) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":178
+  /* "numa.pyx":180
  *     numa_set_membind(&mask)
  * 
  * def get_membind():             # <<<<<<<<<<<<<<
  *     """
  *     Returns  the  mask of nodes from which memory can currently be allocated.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_23get_membind, 0, __pyx_n_s_get_membind, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_23get_membind, 0, __pyx_n_s_get_membind, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_membind, __pyx_t_2) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_membind, __pyx_t_2) < 0) __PYX_ERR(0, 180, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":187
+  /* "numa.pyx":189
  *     return numa_nodemask_to_set(numa_get_membind())
  * 
  * def set_run_on_node_mask(nodemask):             # <<<<<<<<<<<<<<
  *     """
  *     Runs the  current thread and its children only on nodes specified in nodemask.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_25set_run_on_node_mask, 0, __pyx_n_s_set_run_on_node_mask, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_25set_run_on_node_mask, 0, __pyx_n_s_set_run_on_node_mask, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_run_on_node_mask, __pyx_t_2) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_run_on_node_mask, __pyx_t_2) < 0) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":204
+  /* "numa.pyx":206
  *         raise RuntimeError
  * 
  * def get_run_on_node_mask():             # <<<<<<<<<<<<<<
  *     """
  *     Returns the mask of nodes that the current thread is allowed to run on.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_27get_run_on_node_mask, 0, __pyx_n_s_get_run_on_node_mask, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_27get_run_on_node_mask, 0, __pyx_n_s_get_run_on_node_mask, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_run_on_node_mask, __pyx_t_2) < 0) __PYX_ERR(0, 204, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_run_on_node_mask, __pyx_t_2) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":213
+  /* "numa.pyx":215
  *     return numa_nodemask_to_set(numa_get_run_node_mask())
  * 
  * def get_distance(node1, node2):             # <<<<<<<<<<<<<<
  *     """
  *     Reports the distance in the machine topology between two nodes.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_29get_distance, 0, __pyx_n_s_get_distance, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_29get_distance, 0, __pyx_n_s_get_distance, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_distance, __pyx_t_2) < 0) __PYX_ERR(0, 213, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_distance, __pyx_t_2) < 0) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":233
+  /* "numa.pyx":235
  *     return numa_distance(node1, node2)
  * 
  * def get_affinity(pid):             # <<<<<<<<<<<<<<
  *     """
  *     Returns the affinity mask of the process whose ID is pid.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_31get_affinity, 0, __pyx_n_s_get_affinity, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_31get_affinity, 0, __pyx_n_s_get_affinity, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_affinity, __pyx_t_2) < 0) __PYX_ERR(0, 233, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_affinity, __pyx_t_2) < 0) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "numa.pyx":255
+  /* "numa.pyx":257
  *     return result
  * 
  * def set_affinity(pid, cpuset):             # <<<<<<<<<<<<<<
  *     """
  *     Sets  the  CPU  affinity  mask of the process whose ID is pid to the value specified by mask.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_33set_affinity, 0, __pyx_n_s_set_affinity, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4numa_33set_affinity, 0, __pyx_n_s_set_affinity, NULL, __pyx_n_s_numa, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_affinity, __pyx_t_2) < 0) __PYX_ERR(0, 255, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_affinity, __pyx_t_2) < 0) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "numa.pyx":1
- * # cython: language_level=2             # <<<<<<<<<<<<<<
- * 
- * """
+ * # cython: language_level=3             # <<<<<<<<<<<<<<
+ * # distutils: libraries = numa
+ * # distutils: include_dirs = /usr/include
  */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);

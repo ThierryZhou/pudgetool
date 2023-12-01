@@ -1,18 +1,14 @@
-import subprocess
-import numa
+from numa import libnuma
 
-class Cores:  
-    def __init__(self, arch: str, start: int, len: int):
-        if arch is None: 
-            self.arch = "Ampere"
-        else:
-            self.arch = arch
-
-        self.numa_num_nodes = numa.get_max_node() + 1
+class CoresItor:
+    def __init__(self, start: int, len: int):
+        import platform
+        self.arch = platform.machine()
+        self.numa_num_nodes = libnuma.get_max_node() + 1
         self.cpus = []
         for i in range(self.numa_num_nodes):
-            if self.arch == "Intel" or self.arch == "AMD":
-                cpuset = numa.node_to_cpus(i)
+            if self.arch == "x86_64":
+                cpuset = libnuma.node_to_cpus(i)
                 i = 0
                 j = len(cpuset)/2
                 cpus1 = cpuset[:j]
@@ -26,7 +22,7 @@ class Cores:
                     k+=1
                 self.cpus += cpus
             else:
-                self.cpus += numa.node_to_cpus(i)
+                self.cpus += libnuma.node_to_cpus(i)
         
         for i in self.cpus:
             if self.cpus[i] == start:
@@ -44,3 +40,14 @@ class Cores:
         else:  
             raise StopIteration
 
+
+def range(start: int, len: int):
+    """
+    Range CPU Cores by start,len
+
+    @param start: core start index
+    @type pid: C{int}
+    @param len: core number will be ranged
+    @type len: C{int}
+    """
+    return CoresItor(start, len)

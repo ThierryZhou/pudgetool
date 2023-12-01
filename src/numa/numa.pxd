@@ -1,3 +1,7 @@
+# cython: language_level=3
+# distutils: libraries = numa
+# distutils: include_dirs = /usr/include
+
 cdef extern from "numa.h":
     ctypedef int nodemask_t
 
